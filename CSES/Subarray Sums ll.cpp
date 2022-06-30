@@ -27,6 +27,12 @@ int main() {
 /*
 
 Here I implemented a prefix sums solution. It is possible to solve this problem using space complexity O(1) rather than O(n) with a different algorithm. 
-The main "take-a-ways" from this problem were probably the use of a map to keep track of the past prefix sums.
+Logic of solution: Instead of creating a prefix_sum array, I just used a variable [pref] for convienence. Manipulating the prefix sums equation pref[r]-pref[l-1]=sum,
+we can get, pref[l-1]=pref[r]-sum; (note that the variable pref represents the pref[r] here). Now, we need to find if a prefix sum equal to pref[r]-sum 
+exists to the left. To store the past prefix sums, I used a map called prefCount. We add the prefix sum after each continuation of the for loop. If there 
+are past prefix sums of value pref[r]-sum, then we add however many occurences to a counter variable labled ans.
+
+The main "take-aways" from this problem were probably the use of a map to keep track of the past prefix sums and to remember to add prefCount[0] to account for the case
+when a valid prefix starts from the start of the array. 
 
 */
